@@ -99,15 +99,6 @@
   </joint>
 
   <!-- RealSense D41X Camera -->
-  <!-- <link name="arm_camera_link"/>
-  <joint name="arm_camera_joint" type="fixed">
-    <origin xyz="0.0 0.0 0.075" rpy="-1.5708 0 0"/>
-    <parent link="UR_1_s_model_link" />
-    <child link="arm_camera_link" />
-  </joint> -->
-
-
-  <!-- Spawn D415 camera -->
   <sensor_r410 parent="UR_1_s_model_link" prefix="arm_">
     <origin xyz="0 0 0.07" rpy="0 0 1.5708"/>
   </sensor_r410>
@@ -120,14 +111,29 @@
     <child link="/camera_arm/camera_color_optical_frame" />
   </joint>
 
+
+  <!-- Palm - Model S Gripper -->
+  <link name="hand_palm_link"/>
+  <joint name="hand_palm_joint" type="fixed">
+    <origin xyz="0.16 0 0" rpy="2.35619 0 0"/>
+    <parent link="ur_arm_ee_link" />
+    <child link="hand_palm_link" />
+  </joint>
+
+  <!-- Hand center - Model S Gripper -->
+  <link name="hand_center_link"/>
+  <joint name="hand_center_joint" type="fixed">
+    <origin xyz="0.055 0 0" rpy="0 0 0"/>
+    <parent link="hand_palm_link" />
+    <child link="hand_center_link" />
+  </joint>
+
   <!-- Finger tip - Model S Gripper -->
   <link name="hand_finger_tip_link"/>
   <joint name="hand_finger_tip_joint" type="fixed">
-    <origin xyz="0.27 0 0" rpy="2.35619 0 0"/>
-    <parent link="ur_arm_ee_link" />
+    <origin xyz="0.055 0 0" rpy="0 0 0"/>
+    <parent link="hand_center_link" />
     <child link="hand_finger_tip_link" />
   </joint>
-
-
 
 </robot>
