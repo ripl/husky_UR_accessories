@@ -7,7 +7,7 @@
   <xacro:include filename="$(find robotiq_c_model_viz)/urdf/c_model_open.urdf.xacro" />
 
   <!-- RealSense D41X Camera -->
-  <xacro:include filename="$(find realsense_ros_camera)/urdf/_r410.urdf.xacro"/>
+  <xacro:include filename="$(find husky_description)/urdf/accessories/realsense_d410.urdf.xacro"/>
 
   <!-- CHANGE BELOW VALUES DURING INTEGRATION -->
   <!-- MUST CHANGE TO UR5, UR3 or UR10 depending on needs -->
