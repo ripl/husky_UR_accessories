@@ -52,6 +52,18 @@ planner_configs:
     max_nearest_neighbors: 10  # use k nearest neighbors. default: 10
   PRMstarkConfigDefault:
     type: geometric::PRMstar
+  PersistentPRM:
+    type: geometric::PRM
+    multi_query_planning_enabled: true
+    store_planner_data: true
+    load_planner_data: true
+    planner_data_path: /tmp/prm_roadmap.graph
+  PersistentPRMstar:
+    type: geometric::PRMstar
+    multi_query_planning_enabled: true
+    store_planner_data: true
+    load_planner_data: true
+    planner_data_path: /tmp/prm_star_roadmap.graph
 manipulator:
   planner_configs:
     - SBLkConfigDefault
@@ -65,6 +77,8 @@ manipulator:
     - TRRTkConfigDefault
     - PRMkConfigDefault
     - PRMstarkConfigDefault
+    - PersistentPRM
+    - PersistentPRMstar
   projection_evaluator: joints(ur_arm_shoulder_pan_joint,ur_arm_shoulder_lift_joint)
   longest_valid_segment_fraction: 0.05
 palm_manipulator:
@@ -80,6 +94,8 @@ palm_manipulator:
     - TRRTkConfigDefault
     - PRMkConfigDefault
     - PRMstarkConfigDefault
+    - PersistentPRM
+    - PersistentPRMstar
   projection_evaluator: joints(ur_arm_shoulder_pan_joint,ur_arm_shoulder_lift_joint)
   longest_valid_segment_fraction: 0.05
 hand_center_manipulator:
@@ -95,6 +111,8 @@ hand_center_manipulator:
     - TRRTkConfigDefault
     - PRMkConfigDefault
     - PRMstarkConfigDefault
+    - PersistentPRM
+    - PersistentPRMstar
   projection_evaluator: joints(ur_arm_shoulder_pan_joint,ur_arm_shoulder_lift_joint)
   longest_valid_segment_fraction: 0.05
 finger_tip_manipulator:
@@ -110,5 +128,7 @@ finger_tip_manipulator:
     - TRRTkConfigDefault
     - PRMkConfigDefault
     - PRMstarkConfigDefault
+    - PersistentPRM
+    - PersistentPRMstar
   projection_evaluator: joints(ur_arm_shoulder_pan_joint,ur_arm_shoulder_lift_joint)
   longest_valid_segment_fraction: 0.05
