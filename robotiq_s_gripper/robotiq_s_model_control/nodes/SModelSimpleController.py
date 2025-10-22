@@ -140,7 +140,7 @@ def askForCommand(command):
     currentCommand += ', rSPS = ' + str(command.rSPS)
     currentCommand += ', rFRS = ' + str(command.rFRS)
 
-    print currentCommand
+    #print currentCommand#
 
     strAskForCommand  = '-----\nAvailable commands\n\n'
     strAskForCommand += 'r: Reset\n'
@@ -159,7 +159,8 @@ def askForCommand(command):
     
     strAskForCommand += '-->'
 
-    return raw_input(strAskForCommand)
+    # return raw_input(strAskForCommand)
+    return input(strAskForCommand)
 
 def publisher():
     """Main loop which requests new commands and publish them on the SModelRobotOutput topic."""
@@ -167,7 +168,8 @@ def publisher():
     rospy.init_node('SModelSimpleController')
 
     topic_name = rospy.get_param('~topic', '/UR_1/SModelRobotOutput')
-    pub = rospy.Publisher(topic_name, SModelRobotOutput)
+    # pub = rospy.Publisher(topic_name, SModelRobotOutput)
+    pub = rospy.Publisher(topic_name, SModelRobotOutput, queue_size=1)
 
     command = SModelRobotOutput()
 

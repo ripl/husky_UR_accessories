@@ -141,4 +141,13 @@
     <child link="hand_finger_tip_link" />
   </joint>
 
+<!-- mount the grip point link under the UR_1_fts_toolside link. This is used for the compliance controller. Added by Vincent at Mar 24 2025 -->
+  <link name="UR_1_s_grip_point" />
+
+  <joint name="UR_1_s_grip_point_joint" type="fixed">
+    <parent link="UR_1_fts_toolside"/>
+    <child link="UR_1_s_grip_point"/>
+    <!-- z axis towards the gripper; rotate -45 degree to get axis-aligned pose -->
+    <origin xyz="0 0 0.20" rpy="0 0 -0.7854"/>
+  </joint>
 </robot>
