@@ -7,7 +7,7 @@ import roslib  # ; roslib.load_manifest('robotiq_s_model_control')
 from robotiq_s_model_articulated_msgs.msg import SModelRobotOutput, SModelRobotInput
 from time import sleep, time
 from enum import IntEnum
-from ros_utils import ROS_INFO, ROS_WARN
+
 from threading import Thread
 import numpy as np
 import signal
@@ -28,9 +28,9 @@ class AdjustableGripper(Gripper):
         if rospy.get_node_uri() is None:
             self.node_name = 'robotiq_s_interface_node'
             rospy.init_node(self.node_name)
-            ROS_INFO( "The Gripper interface was created outside a ROS node, a new node will be initialized!" )
+            rospy.loginfo( "The Gripper interface was created outside a ROS node, a new node will be initialized!" )
         else:
-            ROS_INFO( "The Gripper interface was created within a ROS node, no need to create a new one!" )
+            rospy.loginfo( "The Gripper interface was created within a ROS node, no need to create a new one!" )
 
         # status of the gripper
         self.status_raw = None

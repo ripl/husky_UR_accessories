@@ -3,7 +3,7 @@ import roslib; roslib.load_manifest('robotiq_s_model_control')
 from robotiq_s_model_articulated_msgs.msg import SModelRobotOutput, SModelRobotInput
 from time import sleep, time
 from enum import IntEnum
-from ros_utils import *
+
 from threading import Thread
 import numpy as np
 import signal
@@ -34,9 +34,9 @@ class Gripper():
         if rospy.get_node_uri() is None:
             self.node_name = 'robotiq_s_interface_node'
             rospy.init_node(self.node_name)
-            ROS_INFO( "The Gripper interface was created outside a ROS node, a new node will be initialized!" )
+            rospy.loginfo( "The Gripper interface was created outside a ROS node, a new node will be initialized!" )
         else:
-            ROS_INFO( "The Gripper interface was created within a ROS node, no need to create a new one!" )
+            rospy.loginfo( "The Gripper interface was created within a ROS node, no need to create a new one!" )
 
         # parameters
         self._open_value = float( max( 0.0, min(open_value, 1.0) ) )
@@ -228,7 +228,7 @@ class Gripper():
             return
         val = float(val)
         if val < 0.0:
-            ROS_WARN( "Value must be in range [0,1], got %d. Using 0.0.", val )
+            rospy.logwarn( "Value must be in range [0,1], got %d. Using 0.0.", val )
             val = 0.0
         if val > 1.0:
             val = 1.0
